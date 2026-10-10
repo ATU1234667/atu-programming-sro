@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СРО №5 — JavaScript и DOM</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <p class="eyebrow">СРО №5 · JavaScript + DOM</p>
+      <h1>Таблица, поиск и каталог</h1>
+      <p class="lead">Введи данные и посмотри, как меняется содержимое страницы.</p>
+      <nav aria-label="Задания">
+        <a href="#multiplication">Таблица умножения</a>
+        <a href="#students">Студенты</a>
+        <a href="#catalog">Каталог</a>
+      </nav>
+    </header>
+
+    <noscript><p class="notice">Для работы заданий включи JavaScript в браузере.</p></noscript>
+
+    <section class="task" id="multiplication" aria-labelledby="table-title">
+      <p class="eyebrow">Базовая сложность · Вариант №5</p>
+      <h2 id="table-title">Таблица умножения</h2>
+      <p class="hint">Введи целое число от 1 до 10. Множители в таблице — от 1 до 10.</p>
+      <div class="two-columns">
+        <form id="table-form" novalidate>
+          <label for="table-number">Число от 1 до 10</label>
+          <input id="table-number" name="number" type="number" min="1" max="10" step="1"
+                 placeholder="Например, 7" aria-describedby="table-error">
+          <p class="error" id="table-error" role="alert"></p>
+
+          <label class="checkbox-label" for="highlight-even">
+            <input id="highlight-even" type="checkbox" checked>
+            Выделить чётные результаты
+          </label>
+
+          <div class="buttons">
+            <button type="submit">Построить таблицу</button>
+            <button class="secondary" id="table-clear" type="button">Очистить</button>
+          </div>
+          <p class="hint small">Подсветку можно включать и выключать после построения.</p>
+        </form>
+
+        <div class="result-panel">
+          <p id="table-placeholder" class="hint">Здесь появится таблица умножения.</p>
+          <div id="table-result" hidden>
+            <table>
+              <caption id="table-caption"></caption>
+              <thead><tr><th scope="col">Пример</th><th scope="col">Результат</th></tr></thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+          <p class="status" id="table-status" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="task" id="students" aria-labelledby="students-title">
+      <p class="eyebrow">Средняя сложность · Вариант №11</p>
+      <h2 id="students-title">Фильтр списка студентов</h2>
+      <p class="hint" id="student-hint">Введи имя или часть фамилии. Регистр букв не влияет на поиск.</p>
+
+      <div class="search-controls">
+        <div>
+          <label for="student-search">Поиск студента</label>
+          <input id="student-search" type="search" placeholder="Например, Анна"
+                 aria-describedby="student-hint">
+        </div>
+        <button class="secondary" id="student-clear" type="button">Показать всех</button>
+      </div>
+
+      <p class="status" id="student-count" role="status">Показано: 8 из 8</p>
+      <ul id="student-list" class="student-list">
+        <li>Анна Смирнова</li>
+        <li>Данияр Ахметов</li>
+        <li>Илья Иванов</li>
+        <li>Мария Ким</li>
+        <li>Никита Петров</li>
+        <li>Ольга Соколова</li>
+        <li>Сергей Попов</li>
+        <li>Алина Орлова</li>
+      </ul>
+      <p class="empty-message" id="student-empty" hidden>Студенты не найдены. Попробуй другой запрос.</p>
+      <p class="hint small">Имена в списке — учебные примеры.</p>
+    </section>
+
+    <section class="task" id="catalog" aria-labelledby="catalog-title">
+      <p class="eyebrow">Повышенная сложность · Вариант №17</p>
+      <h2 id="catalog-title">Каталог товаров</h2>
+      <p class="hint" id="price-hint">Показываются товары с ценой не выше указанной. Пустое поле показывает весь каталог.</p>
+
+      <div class="search-controls">
+        <div>
+          <label for="max-price">Максимальная цена, ₸</label>
+          <input id="max-price" type="number" min="0" step="any" placeholder="Например, 1000"
+                 aria-describedby="price-hint price-error">
+        </div>
+        <button class="secondary" id="product-clear" type="button">Показать все товары</button>
+      </div>
+      <p class="error" id="price-error" role="alert"></p>
+      <p class="status" id="product-count" role="status"></p>
+      <div class="product-grid" id="product-list"></div>
+      <p class="empty-message" id="product-empty" hidden>Товаров с такой ценой нет. Увеличь максимальную цену.</p>
+      <p class="hint small">Товары и цены — учебные данные для демонстрации фильтра.</p>
+    </section>
+  </main>
+</body>
+</html>

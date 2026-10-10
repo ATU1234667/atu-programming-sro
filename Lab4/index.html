@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СРО №4 — Формы и валидация</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="page-header">
+    <p class="eyebrow">СРО №4 · HTML + JavaScript</p>
+    <h1>Формы и проверка данных</h1>
+    <p>Заполни форму и проверь результат. Подсказки помогут исправить ошибки.</p>
+    <nav aria-label="Задания">
+      <a href="#feedback-section">Обратная связь</a>
+      <a href="#delivery-section">Доставка</a>
+      <a href="#internship-section">Стажировка</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="task-card" id="feedback-section" aria-labelledby="feedback-heading">
+      <div class="task-heading">
+        <p class="eyebrow">Базовая сложность · Вариант №2</p>
+        <h2 id="feedback-heading">Обратная связь</h2>
+        <p>Имя и сообщение должны быть заполнены.</p>
+      </div>
+      <div class="task-layout">
+        <form id="feedback-form" novalidate>
+          <div class="field">
+            <label for="feedback-name">Имя</label>
+            <input id="feedback-name" name="name" type="text" placeholder="Как к тебе обращаться?" autocomplete="given-name" aria-describedby="feedback-name-error">
+            <p class="field-error" id="feedback-name-error"></p>
+          </div>
+          <div class="field">
+            <label for="feedback-topic">Тема сообщения</label>
+            <select id="feedback-topic" name="topic">
+              <option value="Вопрос">Вопрос</option>
+              <option value="Предложение">Предложение</option>
+              <option value="Отзыв">Отзыв</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="feedback-message">Сообщение</label>
+            <textarea id="feedback-message" name="message" rows="4" placeholder="Напиши свой вопрос или предложение" aria-describedby="feedback-message-error feedback-counter"></textarea>
+            <p class="field-help" id="feedback-counter">Символов: 0</p>
+            <p class="field-error" id="feedback-message-error"></p>
+          </div>
+          <div class="actions">
+            <button type="submit">Проверить форму</button>
+            <button type="reset" class="secondary">Очистить</button>
+          </div>
+          <p class="form-status" id="feedback-status" role="status"></p>
+        </form>
+        <aside class="result-panel" id="feedback-result" aria-live="polite">
+          <h3>Результат проверки</h3>
+          <p>Здесь появятся данные корректно заполненной формы.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="task-card" id="delivery-section" aria-labelledby="delivery-heading">
+      <div class="task-heading">
+        <p class="eyebrow">Средняя сложность · Вариант №13</p>
+        <h2 id="delivery-heading">Доставка посылки</h2>
+        <p>Выбери город, укажи положительный вес и тип доставки.</p>
+      </div>
+      <div class="task-layout">
+        <form id="delivery-form" novalidate>
+          <div class="field">
+            <label for="delivery-city">Город</label>
+            <select id="delivery-city" name="city" aria-describedby="delivery-city-error">
+              <option value="">Выбери город</option>
+              <option value="Алматы">Алматы</option>
+              <option value="Астана">Астана</option>
+              <option value="Шымкент">Шымкент</option>
+            </select>
+            <p class="field-error" id="delivery-city-error"></p>
+          </div>
+          <div class="field">
+            <label for="delivery-weight">Вес посылки, кг</label>
+            <input id="delivery-weight" name="weight" type="number" step="any" placeholder="Например, 2.5" aria-describedby="delivery-weight-error">
+            <p class="field-error" id="delivery-weight-error"></p>
+          </div>
+          <fieldset id="delivery-type" aria-describedby="delivery-type-error">
+            <legend>Тип доставки</legend>
+            <div class="choices">
+              <label class="choice"><input type="radio" name="deliveryType" value="Стандартная"> Стандартная</label>
+              <label class="choice"><input type="radio" name="deliveryType" value="Экспресс"> Экспресс</label>
+            </div>
+            <p class="field-error" id="delivery-type-error"></p>
+          </fieldset>
+          <div class="actions">
+            <button type="submit">Проверить доставку</button>
+            <button type="reset" class="secondary">Очистить</button>
+          </div>
+          <p class="form-status" id="delivery-status" role="status"></p>
+        </form>
+        <aside class="result-panel" id="delivery-result" aria-live="polite">
+          <h3>Результат проверки</h3>
+          <p>Здесь появятся город, вес посылки и выбранный тип доставки.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="task-card" id="internship-section" aria-labelledby="internship-heading">
+      <div class="task-heading">
+        <p class="eyebrow">Повышенная сложность · Вариант №19</p>
+        <h2 id="internship-heading">Заявка на стажировку</h2>
+        <p>Заполни все поля, отметь минимум два навыка и расскажи о своей мотивации.</p>
+      </div>
+      <div class="task-layout">
+        <form id="internship-form" novalidate>
+          <div class="field">
+            <label for="internship-name">ФИО</label>
+            <input id="internship-name" name="fullName" type="text" placeholder="Введите ФИО" autocomplete="name" aria-describedby="internship-name-error">
+            <p class="field-error" id="internship-name-error"></p>
+          </div>
+          <div class="field">
+            <label for="internship-email">E-mail</label>
+            <input id="internship-email" name="email" type="email" placeholder="name@example.com" autocomplete="email" aria-describedby="internship-email-error">
+            <p class="field-error" id="internship-email-error"></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="internship-course">Курс</label>
+              <select id="internship-course" name="course" aria-describedby="internship-course-error">
+                <option value="">Выбери курс</option>
+                <option value="1">1 курс</option>
+                <option value="2">2 курс</option>
+                <option value="3">3 курс</option>
+                <option value="4">4 курс</option>
+              </select>
+              <p class="field-error" id="internship-course-error"></p>
+            </div>
+            <div class="field">
+              <label for="internship-direction">Направление</label>
+              <select id="internship-direction" name="direction" aria-describedby="internship-direction-error">
+                <option value="">Выбери направление</option>
+                <option value="Веб-разработка">Веб-разработка</option>
+                <option value="Анализ данных">Анализ данных</option>
+                <option value="Тестирование">Тестирование</option>
+              </select>
+              <p class="field-error" id="internship-direction-error"></p>
+            </div>
+          </div>
+          <fieldset id="internship-skills" aria-describedby="internship-skills-error">
+            <legend>Навыки — минимум два</legend>
+            <div class="choices skills">
+              <label class="choice"><input type="checkbox" name="skills" value="HTML"> HTML</label>
+              <label class="choice"><input type="checkbox" name="skills" value="CSS"> CSS</label>
+              <label class="choice"><input type="checkbox" name="skills" value="JavaScript"> JavaScript</label>
+              <label class="choice"><input type="checkbox" name="skills" value="Python"> Python</label>
+            </div>
+            <p class="field-error" id="internship-skills-error"></p>
+          </fieldset>
+          <div class="field">
+            <label for="internship-motivation">Мотивационный текст</label>
+            <textarea id="internship-motivation" name="motivation" rows="5" placeholder="Почему ты хочешь пройти стажировку?" aria-describedby="motivation-help internship-counter internship-motivation-error"></textarea>
+            <p class="field-help" id="motivation-help">От 100 символов. Пробелы в начале и конце не учитываются.</p>
+            <p class="field-help" id="internship-counter">Символов: 0 / минимум 100</p>
+            <p class="field-error" id="internship-motivation-error"></p>
+          </div>
+          <div class="actions">
+            <button type="submit">Проверить заявку</button>
+            <button type="reset" class="secondary">Очистить</button>
+          </div>
+          <p class="form-status" id="internship-status" role="status"></p>
+        </form>
+        <aside class="result-panel" id="internship-result" aria-live="polite">
+          <h3>Результат проверки</h3>
+          <p>После успешной проверки здесь появится заполненная заявка.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer>Учебная демонстрация. Данные проверяются на этой странице.</footer>
+</body>
+</html>

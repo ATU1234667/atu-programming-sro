@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>СРО №6 — DOM и события</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="page-header">
+      <p class="eyebrow">СРО №6 · DOM и события JavaScript</p>
+      <h1>Клавиатура, теги и игра</h1>
+      <p class="lead">Нажми Enter, добавь теги и поймай движущийся объект.</p>
+      <nav aria-label="Задания">
+        <a href="#greeting">Приветствие</a>
+        <a href="#tags">Теги</a>
+        <a href="#game">Поймай объект</a>
+      </nav>
+    </header>
+
+    <noscript><p class="notice">Для работы заданий включи JavaScript в браузере.</p></noscript>
+
+    <section class="task" id="greeting" aria-labelledby="greeting-title">
+      <p class="eyebrow">Базовая сложность · Вариант №6</p>
+      <h2 id="greeting-title">Персональное приветствие</h2>
+      <p class="hint" id="greeting-hint">Введи имя и нажми Enter прямо в поле ввода.</p>
+      <div class="two-columns">
+        <form id="greeting-form" novalidate>
+          <label for="greeting-name">Имя</label>
+          <input id="greeting-name" name="name" type="text" placeholder="Например, Илья"
+                 aria-describedby="greeting-hint greeting-error">
+          <p class="error" id="greeting-error" role="alert"></p>
+          <div class="buttons">
+            <button type="submit">Поздороваться</button>
+            <button class="secondary" id="greeting-clear" type="button">Очистить</button>
+          </div>
+        </form>
+        <div class="result-panel">
+          <p class="hint" id="greeting-placeholder">Здесь появится приветствие.</p>
+          <p class="greeting-output" id="greeting-result" role="status" hidden></p>
+          <p class="status" id="greeting-count">Успешных приветствий: 0</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="task" id="tags" aria-labelledby="tags-title">
+      <p class="eyebrow">Средняя сложность · Вариант №13</p>
+      <h2 id="tags-title">Динамический список тегов</h2>
+      <p class="hint" id="tag-hint">Напиши тег и нажми Enter. Чтобы удалить тег, нажми крестик рядом с ним.</p>
+      <form id="tag-form" novalidate>
+        <div class="tag-controls">
+          <div>
+            <label for="tag-input">Новый тег</label>
+            <input id="tag-input" name="tag" type="text" placeholder="Например, HTML"
+                   aria-describedby="tag-hint tag-error">
+          </div>
+          <button type="submit">Добавить</button>
+          <button class="secondary" id="tag-clear" type="button">Очистить все</button>
+        </div>
+        <p class="error" id="tag-error" role="alert"></p>
+      </form>
+      <p class="status" id="tag-count" role="status">Тегов: 0</p>
+      <ul class="tag-list" id="tag-list" aria-label="Добавленные теги"></ul>
+      <p class="empty-message" id="tag-empty">Тегов пока нет. Добавь первый тег.</p>
+      <p class="hint small">Пустые и повторяющиеся теги не добавляются. Регистр при проверке повторов не учитывается.</p>
+    </section>
+
+    <section class="task" id="game" aria-labelledby="game-title">
+      <p class="eyebrow">Повышенная сложность · Вариант №20</p>
+      <h2 id="game-title">Поймай объект</h2>
+      <p class="hint">Нажимай на синий объект. После каждого попадания он перемещается. Для победы нужно 10 попаданий.</p>
+      <div class="game-controls">
+        <div>
+          <label for="target-size">Размер объекта</label>
+          <select id="target-size">
+            <option value="normal">Обычный</option>
+            <option value="small">Маленький</option>
+          </select>
+        </div>
+        <button type="button" id="game-start">Начать игру</button>
+        <p class="score" id="game-score" role="status">Попаданий: 0 / 10</p>
+      </div>
+      <label class="small" for="game-progress">Прогресс игры</label>
+      <progress id="game-progress" value="0" max="10">0 из 10</progress>
+      <div class="game-board" id="game-board" aria-label="Игровое поле">
+        <p class="board-message" id="game-placeholder">Нажми «Начать игру».</p>
+      </div>
+      <p class="status" id="game-status" role="status">Игра ещё не началась.</p>
+      <p class="hint small">Размер можно менять во время игры. Кнопка запуска начинает новую игру и обнуляет счёт.</p>
+    </section>
+  </main>
+</body>
+</html>
